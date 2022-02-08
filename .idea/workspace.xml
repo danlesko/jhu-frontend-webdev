@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44258153-c136-401a-96fc-761d23525e3e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/module2-solution/img/foodBg.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module2-solution/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/module2-solution/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module2-solution/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/module2-solution/index.html" afterDir="false" />
@@ -35,6 +36,11 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/module2-solution/img" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/jhu-frontend-webdev/module2-solution/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -54,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1643323414128</updated>
       <workItem from="1643323415171" duration="271000" />
-      <workItem from="1644264442549" duration="3062000" />
+      <workItem from="1644264442549" duration="7320000" />
     </task>
     <servers />
   </component>
@@ -72,5 +78,15 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2515" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1644267652857">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2515" y="360" key="#com.intellij.fileTypes.FileTypeChooser/3712.25.1920.1055/1792.25.1920.1055/0.25.1792.1095@1792.25.1920.1055" timestamp="1644267652857" />
+    <state x="2417" y="259" width="670" height="676" key="search.everywhere.popup" timestamp="1644347838257">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2417" y="259" width="670" height="676" key="search.everywhere.popup/1792.25.1920.1055/3712.25.1920.1055/0.25.1792.1095@1792.25.1920.1055" timestamp="1644347838257" />
   </component>
 </project>
