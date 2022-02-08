@@ -119,7 +119,7 @@ section {
         background-color: #de2c3d;
     }
     .hideMenuLG {
-        visibility: hidden;
+        display: none;
     }
 }
 
@@ -178,7 +178,7 @@ section {
         background-color: #de2c3d;
     }
     .hideMenuMD {
-        visibility: hidden;
+        display: none;
     }
 }
 
@@ -236,6 +236,6 @@ section {
         background-color: #de2c3d;
     }
     .hideMenuSM {
-        visibility: hidden;
+        display: none;
     }
 }
