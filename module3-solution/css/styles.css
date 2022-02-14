@@ -1,0 +1,133 @@
+/** HEADER **/
+#header-nav {
+    background-color: #1fb730;
+    border-radius: 0;
+    border: 0;
+}
+.col {
+    padding: 10px;
+}
+
+body {
+    background-image: url("../img/foodBg.jpg");
+    background-position: 50% 50%;
+    background-size: 3840px 2400px;
+}
+
+.navbar-brand h1 { /* Restaurant name */
+    font-family: 'Akaya Telivigala', cursive;
+    color: black;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #222;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.navbar-brand a:hover, .navbar-brand a:focus {
+    text-decoration: none;
+}
+.navbar-brand p { /* Kosher cert */
+    color: #000;
+    text-transform: uppercase;
+    font-size: .7em;
+    margin-top: 15px;
+}
+.navbar-brand p span { /* Star-K */
+    vertical-align: middle;
+}
+
+#nav-list {
+    margin-top: 10px;
+}
+#nav-list a {
+    font-family: Papyrus, cursive;
+    font-size: 1.2em;
+    color: black;
+    text-align: center;
+}
+#nav-list a:hover {
+    background: #E7E7E7;
+}
+#nav-list a span {
+    font-size: 1.8em;
+}
+
+.navbar-header{
+    height: 60px;
+}
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+    border: 1px solid black;
+}
+.navbar-header button.navbar-toggle {
+    clear: both;
+}
+
+p {
+    font-family: 'Akaya Telivigala', cursive;
+}
+
+h3 {
+    font-family: Papyrus, cursive;
+    text-align: center;
+}
+
+.row > div > div {
+    background-color: #5cb85c;
+    padding: 20px;
+}
+
+#menu {
+    font-size: 4em;
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+    text-shadow: 2px 2px 2px white;
+}
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+    #sushi {
+        padding-top: 40px;
+    }
+}
+
+/********** Extra small devices only **********/
+@media (max-width: 767px) {
+    #beef {
+        padding-top: 40px;
+    }
+    #sushi {
+        padding-top: 40px;
+    }
+}
+
+
+/********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
+@media (max-width: 479px) {
+    /* Header */
+    .navbar-brand h1 { /* Restaurant name */
+
+    }
+    /* End Header */
+
+
+    .col-xxs-12 {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        float: left;
+        width: 100%;
+    }
+}
