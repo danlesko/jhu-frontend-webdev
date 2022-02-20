@@ -63,4 +63,26 @@ WARNING!!! WARNING!!!
        helloSpeaker.speak(names[i])
     }
   }
+
+  console.log("*** BREAK BETWEEN FIRST AND SECOND EXERCISE ***")
+
+  var mapFunc = function (x) {
+    var firstLetter = x.charAt(0).toLowerCase();
+    if (firstLetter === "j") {
+      return byeSpeaker.speakSimple(x)
+    } else {
+      return helloSpeaker.speakSimple(x)
+    }
+  }
+
+  var mappedGreetings = names.map(mapFunc);
+  for(var j = 0; j < mappedGreetings.length; j++){
+    console.log(mappedGreetings[j]);
+  }
+
+
+
+
+
+
 })(window);
