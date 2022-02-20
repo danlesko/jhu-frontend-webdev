@@ -80,9 +80,21 @@ WARNING!!! WARNING!!!
     console.log(mappedGreetings[j]);
   }
 
+  console.log("*** BREAK BETWEEN SECOND AND THIRD EXERCISE ***")
 
+  var reduceFunc = function (outputArrs, currentName){
+    currentName.charAt(0).toLowerCase() === 'g' ? outputArrs.bye.push(currentName) : outputArrs.hello.push(currentName);
+    return outputArrs;
+  }
 
+  var reducedNames = mappedGreetings.reduce(reduceFunc, {hello: [], bye: []});
 
+  for( j = 0; j < reducedNames.hello.length; j++){
+    console.log(reducedNames.hello[j]);
+  }
 
+  for( j = 0; j < reducedNames.bye.length; j++){
+    console.log(reducedNames.bye[j]);
+  }
 
 })(window);
