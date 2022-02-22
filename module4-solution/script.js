@@ -82,6 +82,8 @@ WARNING!!! WARNING!!!
 
   console.log("*** BREAK BETWEEN SECOND AND THIRD EXERCISE ***")
 
+  // initial value is outputArrs because we pass in an initial value when we call reduce on line 92
+  // current name is mappedGreetings[0], again because we passed in an initial value w/ reduce
   var reduceFunc = function (outputArrs, currentName){
     currentName.charAt(0).toLowerCase() === 'g' ? outputArrs.bye.push(currentName) : outputArrs.hello.push(currentName);
     return outputArrs;
