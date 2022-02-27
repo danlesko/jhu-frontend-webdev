@@ -22,6 +22,7 @@ var menuItemsUrl =
   "https://davids-restaurant.herokuapp.com/menu_items.json?category=";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
+var aboutHtml = "snippets/about.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -83,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  [...], // ***** <---- TODO: STEP 1: Substitute [...] ******
+  buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
   true); // Explicitly setting the flag to get JSON from server processed into an object literal
 });
 // *** finish **
@@ -101,8 +102,9 @@ function buildAndShowHomeHTML (categories) {
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
-      // var chosenCategoryShortName = ....
-
+      // Returned object, we want string inside object that is short_name
+      var chosenCategoryShortName = chooseRandomCategory(categories);
+      chosenCategoryShortName = chosenCategoryShortName["short_name"];
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
       // chosen category from STEP 2. Use existing insertProperty function for that purpose.
@@ -115,13 +117,16 @@ function buildAndShowHomeHTML (categories) {
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
       //
-      // var homeHtmlToInsertIntoMainPage = ....
+      chosenCategoryShortName = "'" + chosenCategoryShortName + "'";
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml,
+          "randomCategoryShortName",
+          chosenCategoryShortName);
 
 
       // TODO: STEP 4: Insert the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
-      // ....
+      insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
 
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
@@ -137,15 +142,63 @@ function chooseRandomCategory (categories) {
   return categories[randomArrayIndex];
 }
 
+// Load the menu categories view
+  dc.loadMenuCategories = function () {
+    showLoading("#main-content");
+    $ajaxUtils.sendGetRequest(
+        allCategoriesUrl,
+        buildAndShowCategoriesHTML);
+  };
+
 
 // Load the menu categories view
-dc.loadMenuCategories = function () {
+dc.loadAbout = function () {
   showLoading("#main-content");
   $ajaxUtils.sendGetRequest(
     allCategoriesUrl,
-    buildAndShowCategoriesHTML);
+    buildAndShowAboutHTML);
 };
 
+// Builds HTML for the home page based on categories array
+// returned from the server.
+function buildAndShowAboutHTML () {
+
+  // Load home snippet page
+  $ajaxUtils.sendGetRequest(
+      aboutHtml,
+      function (aboutHtml) {
+
+        var aboutHtmlToInsert = insertStars(aboutHtml,
+            getRandomInt());
+
+        insertHtml("#main-content", aboutHtmlToInsert);
+
+      },
+      false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
+}
+
+function getRandomInt() {
+  return Math.floor(Math.random() * 5);
+}
+
+// Search for span elements, and replace classes with solid stars / empty stars according to random int
+  var insertStars = function (string, int) {
+    console.log(int+1);
+
+    var htmlObject = document.createElement('div');
+    htmlObject.innerHTML = string;
+    var spanElements = htmlObject.getElementsByTagName("span");
+    for (var i = 0; i < 5; i++){
+      if (i <= int){
+        spanElements[i].className = "fas fa-star";
+      } else {
+        spanElements[i].className = "far fa-star";
+        spanElements[i].setAttribute("aria-hidden", true)
+      }
+    }
+    spanElements[5].innerText = int+1 + " star rating"
+    return htmlObject.innerHTML;
+  };
 
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
