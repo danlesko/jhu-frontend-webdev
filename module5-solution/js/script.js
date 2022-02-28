@@ -182,23 +182,23 @@ function getRandomInt() {
 }
 
 // Search for span elements, and replace classes with solid stars / empty stars according to random int
-  var insertStars = function (string, int) {
-    console.log(int+1);
+var insertStars = function (string, int) {
+  console.log(int+1);
 
-    var htmlObject = document.createElement('div');
-    htmlObject.innerHTML = string;
-    var spanElements = htmlObject.getElementsByTagName("span");
-    for (var i = 0; i < 5; i++){
-      if (i <= int){
-        spanElements[i].className = "fas fa-star";
-      } else {
-        spanElements[i].className = "far fa-star";
-        spanElements[i].setAttribute("aria-hidden", true)
-      }
+  var htmlObject = document.createElement('div');
+  htmlObject.innerHTML = string;
+  var spanElements = htmlObject.getElementsByTagName("span");
+  for (var i = 0; i < 5; i++){
+    if (i <= int){
+      spanElements[i].className = "fas fa-star";
+    } else {
+      spanElements[i].className = "far fa-star";
+      spanElements[i].setAttribute("aria-hidden", true)
     }
-    spanElements[5].innerText = int+1 + " star rating"
-    return htmlObject.innerHTML;
-  };
+  }
+  spanElements[5].innerText = int+1 + " star rating"
+  return htmlObject.innerHTML;
+};
 
 // Load the menu items view
 // 'categoryShort' is a short_name for a category
