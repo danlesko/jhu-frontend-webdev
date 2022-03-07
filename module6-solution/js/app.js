@@ -8,6 +8,8 @@ LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
   $scope.lunchList = "";
   $scope.lunchMsg = "";
+  $scope.formValid = "";
+  $scope.textColor = "";
 
   $scope.calcTooMuch = function() {
     var lunchArray = $scope.lunchList.split(",")
@@ -15,29 +17,20 @@ function LunchCheckController($scope) {
       return element.trim() !== '';
     });
 
-    var includesEmpty = lunchArray.length > lunchArrayTrimmed.length;
-
-    console.log(lunchArray);
-    console.log(includesEmpty);
-    console.log(lunchArrayTrimmed);
-
-    if (!includesEmpty) {
-      if (lunchArray.length === 0) {
-        $scope.lunchMsg = "Please enter data first";
-      } else if (lunchArray.length <= 3){
-        $scope.lunchMsg = "Enjoy!";
-      } else {
-        $scope.lunchMsg = "Too much! man";
-      }
+    if (lunchArrayTrimmed.length === 0) {
+      $scope.lunchMsg = "Please enter data first!";
+      $scope.formValid = "has-error";
+      $scope.textColor = "text-danger";
+    } else if (lunchArrayTrimmed.length <= 3){
+      $scope.lunchMsg = "Enjoy!";
+      $scope.formValid = "has-success";
+      $scope.textColor = "text-success";
     } else {
-      if (lunchArrayTrimmed.length === 0) {
-        $scope.lunchMsg = "Please enter data first";
-      } else if (lunchArrayTrimmed.length <= 3){
-        $scope.lunchMsg = "Enjoy!";
-      } else {
-        $scope.lunchMsg = "Too much!";
-      }
+      $scope.lunchMsg = "Too much!";
+      $scope.formValid = "has-success";
+      $scope.textColor = "text-success";
     }
+
   }
 }
 

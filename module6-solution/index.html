@@ -14,16 +14,16 @@
    <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
 
-         <div class="form-group">
-             <label for="lunch-menu">Empty or whitespace items will not be counted, thank you!</label>
+         <div class="form-group {{formValid}}">
+             <label for="lunch-menu" class="{{textColor}}">Empty or whitespace items will not be counted, thank you!</label>
              <input id="lunch-menu" type="text" ng-model="lunchList"
                                                     placeholder="Please list comma separated dishes you usually have for lunch"
-                                                    class="form-control">
+                                                    class="form-control ">
          </div>
          <div class="form-group">
              <button class="btn btn-default" data-ng-click="calcTooMuch();">Check If Too Much</button>
          </div>
-         <div class="form-group message">
+         <div class="form-group message {{textColor}}">
              {{lunchMsg}}
          </div>
    </div>
