@@ -4,7 +4,8 @@
 angular.module('ShoppingListCheckoff', [])
 .controller('ToBuyController', ToBuyController)
 .controller('AlreadyBoughtController', AlreadyBoughtController)
-.service('ShoppingListCheckoffService', ShoppingListCheckOffService);
+.service('ShoppingListCheckoffService', ShoppingListCheckOffService)
+.filter('DollaDolla', DollaDollaFilter);
 
 ToBuyController.$inject = ['ShoppingListCheckoffService'];
 function ToBuyController(ShoppingListCheckOffService) {
@@ -21,6 +22,9 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
   var bought = this;
   bought.alreadyBoughtItems = ShoppingListCheckOffService.getAlreadyBoughtItems();
 
+  bought.runningTotal = function(){
+    return ShoppingListCheckOffService.getRunningTotal();
+  }
 }
 
 function ShoppingListCheckOffService() {
@@ -55,6 +59,7 @@ function ShoppingListCheckOffService() {
     }
   ];
   var alreadyBoughtItems = [];
+  var runningTotal = 0;
 
   service.buyItem = function (itemName, quantity) {
       var boughtItem = toBuyItems.filter(obj => {return obj.item === itemName});
@@ -67,6 +72,9 @@ function ShoppingListCheckOffService() {
       // add item to the alreadyBoughtItems list
       boughtItem.quantity = quantity;
       alreadyBoughtItems.push(boughtItem);
+
+      runningTotal = runningTotal + boughtItem.quantity * boughtItem.price;
+      console.log(runningTotal);
   };
 
   service.getToBuyItems = function () {
@@ -75,6 +83,17 @@ function ShoppingListCheckOffService() {
 
   service.getAlreadyBoughtItems = function () {
     return alreadyBoughtItems;
+  };
+
+  service.getRunningTotal = function() {
+    return runningTotal;
+  }
+}
+
+function DollaDollaFilter() {
+  return function (input) {
+    input = "$$" + input;
+    return input;
   };
 }
 
