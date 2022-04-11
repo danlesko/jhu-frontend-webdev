@@ -11,31 +11,29 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 // Inject $http into service
 MenuSearchService.$inject = ['$http'];
 function NarrowItDownController(MenuSearchService) {
-  var controller = this;
+  var narrow = this;
 
-  controller.found = null;
-  controller.searchTerm = "";
-  controller.finding = false;
+  narrow.found = null;
+  narrow.searchTerm = "";
+  narrow.finding = false;
 
-  controller.narrowItDown = function (searchTerm) {
+  narrow.narrowItDown = function (searchTerm) {
     if(searchTerm != null && searchTerm.length > 0) {
-      controller.finding = true;
+      narrow.finding = true;
       MenuSearchService.getMatchedMenuItems(searchTerm)
           .then(function (response) {
-            controller.found = response;
-            controller.finding = false;
+            narrow.found = response;
+            narrow.finding = false;
           })
           .catch(function (error) {
-            console.log('Something went terribly wrong!\n' + error);
-            controller.finding = false;
+            console.log('Uh-oh spaghetti-O\'s\n' + error);
+            narrow.finding = false;
           });
     }
-    else
-      controller.found = [];
   }
 
-  controller.removeItem = function (index) {
-    controller.found.splice(index, 1);
+  narrow.removeItem = function (index) {
+    narrow.found.splice(index, 1);
   }
 
 }
@@ -51,16 +49,17 @@ function MenuSearchService($http) {
     })
       .then(function (result) {
         var foundItems = [];
-        // Process result and only keep items that match
         var menuItems = result.data.menu_items;
 
+        // Get menu items if search string is included in description
         for(var i = 0; i < menuItems.length; i++) {
-          if(menuItems[i].description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+          if(menuItems[i].description.toLowerCase().includes(searchTerm.toLowerCase())) {
+            foundItems.push(menuItems[i]);
+          } else if (menuItems[i].name.toLowerCase().includes(searchTerm.toLowerCase())){
             foundItems.push(menuItems[i]);
           }
         }
 
-        // Return processed items
         return foundItems;
       });
   }

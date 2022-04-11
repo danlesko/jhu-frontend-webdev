@@ -1,20 +1,20 @@
 <div class="loader" ng-if="narrowItDownCtrl.finding"></div>
-<div class="clear">
-    <table class="table" ng-if="narrowItDownCtrl.found.length > 0">
-        <tr>
-            <th>Item Code</th>
-            <th>Item Name</th>
-            <th>Description</th>
-            <th>Remove</th>
-        </tr>
-        <tr ng-repeat="item in narrowItDownCtrl.found" ng-class="$index % 2 === 0 ? 'danger' : 'info' ">
-            <td>{{ item.short_name }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.description }}</td>
-            <td>
-                <button class="btn btn-secondary" ng-click="narrowItDownCtrl.onRemove({index: $index});">Don't want this one!</button>
-            </td>
-        </tr>
-    </table>
-    <h4 ng-if="narrowItDownCtrl.found.length === 0">Nothing found</h4>
-</div>
+<br/>
+<br/>
+<table class="table" ng-if="narrowItDownCtrl.found.length > 0">
+    <tr>
+        <th>Fast Order #</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Remove</th>
+    </tr>
+    <tr ng-repeat="item in narrowItDownCtrl.found" ng-class="$index % 2 === 0 ? 'danger' : 'info' ">
+        <td>{{ item.short_name }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>
+            <button class="btn btn-primary" ng-click="narrowItDownCtrl.onRemove({index: $index});">Don't want this one!</button>
+        </td>
+    </tr>
+</table>
+<h5 class="text-danger" ng-if="narrowItDownCtrl.found.length === 0">Nothing found!</h5>
