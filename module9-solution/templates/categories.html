@@ -1,0 +1,9 @@
+<h3>Categories</h3>
+<ul>
+    <li ng-repeat="item in category.items" ui-sref="menuItems({shortName: item.short_name})">
+        <a href="#">{{ item.name }}</a>
+    </li>
+    <br />
+    <a href="#" ui-sref="home">Go Back</a>
+</ul>
+
