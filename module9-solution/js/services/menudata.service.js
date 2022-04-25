@@ -15,7 +15,7 @@
         url: (BaseUrl + "/categories.json")
       }).then(function(result) {
         var categories = [];
-        for (var item of result.data) {
+        for (var category of result.data) {
           categories.push(item);
         }
         return categories;
