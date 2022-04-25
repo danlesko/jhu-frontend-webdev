@@ -2,13 +2,13 @@
 'use strict';
 
 angular.module('MenuApp')
-.controller('CategoriesListController', CategoriesListController);
+.controller('CategoryController', CategoryController);
 
 
-CategoriesListController.$inject = ['MenuDataService', 'items'];
-function CategoriesListController(MenuDataService, items) {
-  var categories = this;
-  categories.items = items;
+  CategoryController.$inject = ['MenuDataService', 'items'];
+function CategoryController(MenuDataService, items) {
+  var ctrl = this;
+  ctrl.items = items;
 }
 
 })();
