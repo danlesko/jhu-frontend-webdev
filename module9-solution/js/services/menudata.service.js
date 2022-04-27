@@ -16,7 +16,7 @@
       }).then(function(result) {
         var categories = [];
         for (var category of result.data) {
-          categories.push(item);
+          categories.push(category);
         }
         return categories;
       });
