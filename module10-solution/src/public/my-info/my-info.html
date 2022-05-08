@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="media" ng-if="myInfoCtrl.registered">
+    <div class="media-left">
+      <a href="#" ng-hide="!myInfoCtrl.favorite">
+        <img class="media-object" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.favorite.short_name}}.jpg">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{myInfoCtrl.user.firstName}} {{myInfoCtrl.user.lastName}}</h4>
+      Email: {{myInfoCtrl.user.email}} <br>
+      Phone: {{myInfoCtrl.user.phone}} <br>
+      <span ng-hide="!myInfoCtrl.favorite">
+        Favorite Dish: {{myInfoCtrl.favorite.name}} <br>
+        Description: {{myInfoCtrl.favorite.description}} <br>
+      </span>
+    </div>
+  </div>
+  <div class="col-xs-12" ng-hide="myInfoCtrl.registered">
+    Currently Not Signed Up...
+    <a ui-sref="public.sign-up">Sign Up Now!</a>
+  </div>
+</div>

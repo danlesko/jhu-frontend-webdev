@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Newsletter Sign Up</h1>
+  <form name="signUpForm">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" ng-model="signUpCtrl.user.firstName" required>
+      <span ng-if="signUpForm.firstName.$error.required && signUpForm.firstName.$touched">
+          Please Enter Your First Name!
+        </span>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" ng-model="signUpCtrl.user.lastName" required>
+      <span ng-if="signUpForm.lastName.$error.required && signUpForm.lastName.$touched">
+          Please Enter Your Last Name!
+        </span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" name="email" class="form-control" id="email" placeholder="Email" ng-model="signUpCtrl.user.email" required>
+      <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+          Please Enter A Valid Email Address
+        </span>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" name="phone" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone" placeholder="Phone" ng-model="signUpCtrl.user.phone"
+             required>
+      <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+          Please Enter Phone Number XXX-XXX-XXXX
+        </span>
+    </div>
+    <div class="form-group">
+      <label for="favorite">Favorite Menu Item</label>
+      <input ng-blur="signUpCtrl.checkForItem()"
+             ng-model="signUpCtrl.user.favorite" type="text" name="favorite" class="form-control" id="favorite" placeholder="Favorite Item">
+      <span ng-if="signUpCtrl.error">
+          Can Not Locate Menu Item!
+        </span>
+    </div>
+    <button type="button" class="btn btn-default" ng-disabled="signUpForm.$invalid"
+            ng-click="signUpCtrl.submit()">Submit</button>
+  </form>
+  <div>
+    <span ng-if="signUpCtrl.registered">
+      Your Information Has Been Saved!
+    </span>
+  </div>
+</div>
